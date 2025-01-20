@@ -1,34 +1,44 @@
 {% load static %}
-<body>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9;">
   <!-- Main content -->
-  <main>
+  <main style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
     <div>
-      Hello!
-    
-      <p>
-        Please click the link below to verify your email address.
+      <h1 style="color: #333333; text-align: center;">Welcome to GreedyBear!</h1>
+
+      <p style="font-size: 16px; color: #555555; text-align: center;">
+        To complete your registration, please verify your email address by clicking the button below:
       </p>
-    
-      <div style="border: 1px solid black; padding: 4px">
-        <a href="{{ verification_url }}" target="_blank">{{ verification_url }}</a>
+
+      <div style="text-align: center; margin: 20px 0;">
+        <a href="{{ verification_url }}" target="_blank" style="display: inline-block; text-decoration: none; color: #ffffff; background-color: #007bff; padding: 12px 20px; border-radius: 4px; font-size: 16px;">
+          Verify Email
+        </a>
       </div>
-    
-      <p>or, you may also copy and paste directly into your browser's URL bar.</p>
-    
-      <pre style="background-color: #eeeeee">{{ verification_url }}</pre>
-    
-      <p>
+
+      <p style="font-size: 14px; color: #777777; text-align: center;">
+        If the button above doesn’t work, copy and paste the URL below into your browser:
+      </p>
+
+      <div style="background-color: #f0f0f0; padding: 10px; border-radius: 4px; word-wrap: break-word; text-align: center; margin: 10px 0;">
+        <a href="{{ verification_url }}" target="_blank" style="color: #007bff; text-decoration: none;">{{ verification_url }}</a>
+      </div>
+
+      <p style="font-size: 14px; color: #777777; text-align: center;">
         <em>Note: This URL is valid only for the next 24 hours.</em>
       </p>
-    
     </div>
   </main>
+
   <!-- Footer -->
-  <footer>
-    <hr />
-    Thank you,
-    <br />
-    <strong>GreedyBear ©</strong>
+  <footer style="text-align: center; padding: 20px; font-size: 14px; background-color: #f1f1f1; border-top: 1px solid #e0e0e0;">
+    <p style="margin: 0; color: #555555;">
+      Thank you for joining us!
+    </p>
+    <p style="margin: 5px 0;">
+      <strong style="color: #007bff;">GreedyBear ©</strong>
+    </p>
+    <p style="margin: 0; font-size: 12px; color: #999999;">
+      Need help? Contact our <a href="mailto:support@greedybear.com" style="color: #007bff; text-decoration: none;">support team</a>.
+    </p>
   </footer>
 </body>
-
