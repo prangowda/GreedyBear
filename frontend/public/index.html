@@ -8,37 +8,41 @@
     <meta name="description" content="Web application created using create-react-app" />
     <meta name="keywords" content="React, Web App, GreedyBear, Modern App" />
     <meta name="author" content="GreedyBear Team" />
-    
+
     <!-- Open Graph metadata for improved sharing -->
     <meta property="og:title" content="GreedyBear - Modern Web Application" />
     <meta property="og:description" content="A cutting-edge web app created with React and modern technologies." />
     <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
     <meta property="og:url" content="https://www.greedybear.com" />
     <meta property="og:type" content="website" />
-    
+
     <!-- Twitter Card metadata -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="GreedyBear" />
     <meta name="twitter:description" content="Experience the future of web apps with GreedyBear!" />
     <meta name="twitter:image" content="%PUBLIC_URL%/twitter-image.png" />
-    
+
     <!-- Favicon and Touch Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    
+
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMbWV1V7iXltDjtf7es9XfE60kvZV9NAyMoA3Yk" crossorigin="anonymous" />
-    
+
     <!-- Web Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-    
+
     <!-- Preloading critical resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" href="%PUBLIC_URL%/logo192.png" as="image" />
-    
+
+    <!-- Added preloading for main CSS and JS files -->
+    <link rel="preload" href="%PUBLIC_URL%/main.css" as="style" />
+    <link rel="preload" href="%PUBLIC_URL%/main.js" as="script" />
+
     <title>GreedyBear | Cutting-Edge Web App</title>
   </head>
   <body>
@@ -57,21 +61,31 @@
     </script>
 
     <!-- Cookie Consent Banner -->
-    <div id="cookie-consent">
-      <p>
+    <div id="cookie-consent" style="background: #00485a; color: #fff; padding: 1em; position: fixed; bottom: 0; width: 100%; z-index: 1000; display: flex; justify-content: space-between; align-items: center;">
+      <p style="margin: 0;">
         We use cookies to ensure you get the best experience on our website.
-        <a href="/privacy-policy">Learn more</a>.
+        <a href="/privacy-policy" style="color: #ffd700; text-decoration: underline;">Learn more</a>.
       </p>
-      <button id="accept-cookies">Accept</button>
+      <button id="accept-cookies" style="background: #ffd700; border: none; color: #00485a; padding: 0.5em 1em; cursor: pointer;">Accept</button>
     </div>
-    
+
     <!-- Custom Scripts -->
     <script>
       document.getElementById("accept-cookies").addEventListener("click", function () {
         document.getElementById("cookie-consent").style.display = "none";
       });
     </script>
-    
+
+    <!-- Added Lazy Loading Script for Images -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const images = document.querySelectorAll("img[loading='lazy']");
+        images.forEach((img) => {
+          img.src = img.dataset.src;
+        });
+      });
+    </script>
+
     <!-- Example Progressive Web App support -->
     <script>
       if ("serviceWorker" in navigator) {
@@ -82,5 +96,34 @@
         });
       }
     </script>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+      const darkModeToggle = document.createElement("button");
+      darkModeToggle.innerText = "Toggle Dark Mode";
+      darkModeToggle.style.position = "fixed";
+      darkModeToggle.style.bottom = "10px";
+      darkModeToggle.style.right = "10px";
+      darkModeToggle.style.background = "#00485a";
+      darkModeToggle.style.color = "#fff";
+      darkModeToggle.style.border = "none";
+      darkModeToggle.style.padding = "0.5em 1em";
+      darkModeToggle.style.cursor = "pointer";
+      document.body.appendChild(darkModeToggle);
+
+      darkModeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+      });
+    </script>
+
+    <style>
+      body.dark-mode {
+        background-color: #121212;
+        color: #ffffff;
+      }
+      body.dark-mode a {
+        color: #ffd700;
+      }
+    </style>
   </body>
 </html>
